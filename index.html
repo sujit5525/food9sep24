@@ -1,0 +1,62 @@
+<html>
+<head>
+<title> Food App </title>
+<style>
+*{font-size: 40px; font-family: calibri;}
+boby{background-color: azure;}
+input[type=radio] {width:2%; height:0.75em;}
+</style>
+</head>
+<body>
+<center>
+<h1> Food App </h1>
+<form onsubmit="show()">
+<input type="text" id="name" placeholder="enter your name"/>
+</br></br>
+<input type="radio" name="f" id="ni"/>North Indian
+<input type="radio" name="f" id="si"/>South Indian
+<input type="radio" name="f" id="ff" checked="true"/>Fast Food
+</br></br>
+<input type="submit"/>
+</form>
+<h2 id="msg"/>
+<script>
+function show()
+{
+event.preventDefault();
+let name = document.getElementById("name");
+let ni =document.getElementById("ni");
+let si =document.getElementById("si");
+let ff =document.getElementById("ff");
+let msg =document.getElementById("msg");
+
+let n = name.value;
+
+if(n.trim()==="")
+{
+alert("please enter name");
+msg.innerHTML="";
+name.focus();
+return;
+}
+
+if(!n.match("^[A-Za-z ]+$"))
+{
+alert("name shud contain only alphabets");
+msg.innerHTML="";
+name.focus();
+return;
+}
+
+let choice="";
+if(ni.checked)       choice="North Indian";
+else if(si.checked)  choice="South Indian";
+else                 choice="Fast Food";
+
+let a ="Name = "+ n +" choice = " + choice;
+msg.innerHTML= a;
+}
+</script>
+</center>
+</body>
+</html>
